@@ -1,0 +1,58 @@
+.main-container{
+    display: flex;
+    flex-direction: row;
+    width:100vw;
+}
+
+.child-1-container{
+    display: flex;
+    width: 20vw;
+    flex-direction: column;
+}
+
+.search-form-field{
+    padding: 10px 10px 0px 10px;
+    margin-left: 10px ;
+}
+
+.fields{
+    padding-left: 10px;
+    margin-left: 10px ;
+}
+
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+    align-items: flex-start;
+  }
+  
+.radio-button {
+   margin: 5px;
+}
+
+.right-align {
+    text-align: right;
+  }
+  
+  input.right-align::-webkit-outer-spin-button,
+  input.right-align::-webkit-inner-spin-button {
+    display: none;
+  }
+  
+  input.right-align {
+    -moz-appearance: textfield;
+  }
+
+.child-2-container{
+    display: flex;
+    width:100%;
+    flex-direction: row;
+}
+
+.no-data-container{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}

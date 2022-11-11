@@ -1,0 +1,28 @@
+mat-card{
+    max-width: 250px;
+    margin-top: 10px;
+    margin-right: 10px ;
+}
+
+
+.panel {
+    border: none;
+    box-shadow: none;
+}
+
+.pro-img-box {
+    position: relative;
+}
+
+a{
+    color: white;
+}
+
+
+p{
+    color: #fc5959;
+}
+
+mat-divider{
+    border-top-width: 5px;
+}

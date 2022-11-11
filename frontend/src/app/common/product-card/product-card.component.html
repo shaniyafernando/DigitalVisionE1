@@ -1,0 +1,24 @@
+<mat-card (click)="openProductDetailsSection(product)">
+    <section class="panel">
+        <div class="pro-img-box">
+            <img mat-card-image src={{product.images[1]}} alt="{{product.images[2]}}">
+        </div>
+
+        <div class="panel-body text-center">
+            <h4>
+                <a href="#">
+                    {{product.title}}
+                </a>
+            </h4>
+            <p>{{product.price}}</p>
+        </div>
+    </section>
+    <mat-card-footer color="accent">
+        <!-- <mat-progress-bar mode="indeterminate" color="accent"></mat-progress-bar> -->
+        <mat-divider></mat-divider>
+    </mat-card-footer>
+  </mat-card>
+
+  
+
+
