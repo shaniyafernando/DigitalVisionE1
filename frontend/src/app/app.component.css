@@ -1,0 +1,21 @@
+.main-container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+mat-drawer-container{
+    width: 100vw;
+    height: 100vh;
+}
+
+mat-drawer{
+    width: 20vw;
+}
+
+.drawer-button{
+    width: 100%;
+    color: rgb(238, 13, 238);
+    text-align: start;
+}

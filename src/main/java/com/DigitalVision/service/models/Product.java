@@ -2,10 +2,7 @@ package com.DigitalVision.service.models;
 
 import org.springframework.format.number.CurrencyStyleFormatter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -13,14 +10,16 @@ import java.util.Currency;
 import java.util.List;
 import java.util.Locale;
 
-
+@Entity
+@Table
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private List<String> images;
+    private String[] images;
     private String title;
     private String description;
+    private String category;
     private String colour;
     private String brand;
     private String price;
@@ -29,28 +28,30 @@ public class Product {
     public Product() {
     }
 
-    public Product(Long id, List<String> images, String title, String description, String colour, String brand, String price, int quantity) {
+    public Product(Long id, String[] images, String title, String description, String colour, String brand,String category, String price, int quantity) {
         this.id = id;
         this.images = images;
         this.title = title;
         this.description = description;
         this.colour = colour;
         this.brand = brand;
+        this.category = category;
         this.price = price;
         this.quantity = quantity;
     }
 
-    public Product(List<String> images, String title, String description, String colour, String brand, String price, int quantity) {
+    public Product(String[] images, String title, String description, String colour, String brand ,String category, String price, int quantity) {
         this.images = images;
         this.title = title;
         this.description = description;
         this.colour = colour;
         this.brand = brand;
+        this.category = category;
         this.price = price;
         this.quantity = quantity;
     }
 
-    public String formatPrice(BigDecimal price) {
+    public String formatPrice(double price) {
         CurrencyStyleFormatter formatter = new CurrencyStyleFormatter();
         formatter.setFractionDigits(0);
         return formatter.print(price, Locale.US);
@@ -64,11 +65,11 @@ public class Product {
         this.id = id;
     }
 
-    public List<String> getImages() {
+    public String[] getImages() {
         return images;
     }
 
-    public void setImages(List<String> images) {
+    public void setImages(String[] images) {
         this.images = images;
     }
 
@@ -102,6 +103,14 @@ public class Product {
 
     public void setBrand(String brand) {
         this.brand = brand;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public String getPrice() {

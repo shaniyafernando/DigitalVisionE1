@@ -8,32 +8,38 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+
 @AllArgsConstructor
 @Service
 public class ProductService {
 
     final ProductRepository productRepository;
 
-    public void addNewProduct(ProductDTO product){
+    public Product addNewProduct(ProductDTO product){
         Product newProduct = new Product();
 
         String convertIntoCurrency = newProduct.formatPrice(product.getPrice());
 
-        newProduct.setImages(product.getImages());
+
         newProduct.setTitle(product.getTitle());
         newProduct.setDescription(product.getDescription());
+        newProduct.setCategory(product.getCategory());
         newProduct.setBrand(product.getBrand());
         newProduct.setColour(product.getColour());
         newProduct.setPrice(convertIntoCurrency);
         newProduct.setQuantity(product.getQuantity());
 
-        productRepository.save(newProduct);
+        String[] images = product.getImages();
+
+        if(images.length == 5){
+            newProduct.setImages(product.getImages());
+        }
+
+        return productRepository.save(newProduct);
     }
 
-    public void addProductList(List<ProductDTO> productList){
-        for (ProductDTO product: productList) {
-            addNewProduct(product);
-        }
+    public List<Product> getAllProducts(){
+        return productRepository.findAll();
     }
 
 }

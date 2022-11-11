@@ -1,33 +1,35 @@
 package com.DigitalVision.service.dtos;
 
-import java.math.BigDecimal;
-import java.util.List;
-
 public class ProductDTO {
 
-    private List<String> images;
+    private String[] images;
     private String title;
     private String description;
     private String colour;
     private String brand;
-    private BigDecimal price;
+
+    private String category;
+    private double price;
     private int quantity;
 
-    public ProductDTO(List<String> images, String title, String description, String colour, String brand, BigDecimal price, int quantity) {
+    public ProductDTO(String[] images, String title, String description, String colour, String brand,String category, double price, int quantity) {
         this.images = images;
         this.title = title;
         this.description = description;
         this.colour = colour;
         this.brand = brand;
+        this.category = category;
         this.price = price;
         this.quantity = quantity;
     }
 
-    public List<String> getImages() {
+
+
+    public String[] getImages() {
         return images;
     }
 
-    public void setImages(List<String> images) {
+    public void setImages(String[] images) {
         this.images = images;
     }
 
@@ -63,11 +65,19 @@ public class ProductDTO {
         this.brand = brand;
     }
 
-    public BigDecimal getPrice() {
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
