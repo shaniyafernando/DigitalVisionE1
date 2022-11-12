@@ -1,13 +1,11 @@
 package com.DigitalVision.service.services;
 
-import com.DigitalVision.service.dtos.ProductDTO;
 import com.DigitalVision.service.models.Product;
 import com.DigitalVision.service.repositories.ProductRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 
 @AllArgsConstructor
@@ -16,7 +14,7 @@ public class ProductService {
 
     final ProductRepository productRepository;
 
-    public Product addNewProduct(ProductDTO product){
+    public Product addNewProduct(Product product){
         Product newProduct = new Product();
 
         newProduct.setTitle(product.getTitle());

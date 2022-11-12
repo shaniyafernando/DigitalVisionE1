@@ -1,6 +1,5 @@
 package com.DigitalVision.service.controllers;
 
-import com.DigitalVision.service.dtos.ProductDTO;
 import com.DigitalVision.service.models.Product;
 import com.DigitalVision.service.services.ProductService;
 import lombok.AllArgsConstructor;
@@ -22,7 +21,7 @@ public class ProductController {
     final ProductService productService;
 
     @PostMapping()
-    public  ResponseEntity<Product> addProductList(@RequestBody ProductDTO product){
+    public  ResponseEntity<Product> addProductList(@RequestBody Product product){
         Product newProduct = productService.addNewProduct(product);
         return new ResponseEntity<>(newProduct, HttpStatus.CREATED);
     }
