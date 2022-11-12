@@ -28,8 +28,8 @@ public class ProductController {
     }
 
     @GetMapping("all")
-    public  ResponseEntity<List<Product>> getAllProduct(){
-        List<Product> products = productService.getAllProducts();
+    public  ResponseEntity<List<Product>> getAllProduct(String query, double minPrice, double maxPrice, String category){
+        List<Product> products = productService.getAllProducts(query, minPrice, maxPrice, category);
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
 }

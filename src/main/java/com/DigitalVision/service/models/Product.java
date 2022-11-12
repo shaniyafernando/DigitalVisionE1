@@ -22,13 +22,13 @@ public class Product {
     private String category;
     private String colour;
     private String brand;
-    private String price;
+    private double price;
     private int quantity;
 
     public Product() {
     }
 
-    public Product(Long id, String[] images, String title, String description, String colour, String brand,String category, String price, int quantity) {
+    public Product(Long id, String[] images, String title, String description, String colour, String brand,String category, double price, int quantity) {
         this.id = id;
         this.images = images;
         this.title = title;
@@ -40,7 +40,7 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public Product(String[] images, String title, String description, String colour, String brand ,String category, String price, int quantity) {
+    public Product(String[] images, String title, String description, String colour, String brand ,String category, double price, int quantity) {
         this.images = images;
         this.title = title;
         this.description = description;
@@ -49,12 +49,6 @@ public class Product {
         this.category = category;
         this.price = price;
         this.quantity = quantity;
-    }
-
-    public String formatPrice(double price) {
-        CurrencyStyleFormatter formatter = new CurrencyStyleFormatter();
-        formatter.setFractionDigits(0);
-        return formatter.print(price, Locale.US);
     }
 
     public Long getId() {
@@ -113,11 +107,11 @@ public class Product {
         this.category = category;
     }
 
-    public String getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

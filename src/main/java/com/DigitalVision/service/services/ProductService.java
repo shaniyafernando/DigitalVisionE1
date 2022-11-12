@@ -6,7 +6,8 @@ import com.DigitalVision.service.repositories.ProductRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 
 @AllArgsConstructor
@@ -18,15 +19,12 @@ public class ProductService {
     public Product addNewProduct(ProductDTO product){
         Product newProduct = new Product();
 
-        String convertIntoCurrency = newProduct.formatPrice(product.getPrice());
-
-
         newProduct.setTitle(product.getTitle());
         newProduct.setDescription(product.getDescription());
         newProduct.setCategory(product.getCategory());
         newProduct.setBrand(product.getBrand());
         newProduct.setColour(product.getColour());
-        newProduct.setPrice(convertIntoCurrency);
+        newProduct.setPrice(product.getPrice());
         newProduct.setQuantity(product.getQuantity());
 
         String[] images = product.getImages();
@@ -38,8 +36,50 @@ public class ProductService {
         return productRepository.save(newProduct);
     }
 
-    public List<Product> getAllProducts(){
+    public List<Product> getAllProducts(String query, double minPrice, double maxPrice, String category){
+        Set<Product> filteredProducts = new HashSet<>();
+
+        if(query != null || minPrice != 0 || maxPrice != 0 || category != null){
+            Set<Product> productsIncludingQuery = filterAllProductsBySearchQuery(query);
+            Set<Product> productsIncludedInPriceRange = filterAllProductsByPriceRange(minPrice, maxPrice);
+            Set<Product> productsByCategory = filterAllProductsByCategory(category);
+            filteredProducts.addAll(productsByCategory);
+            filteredProducts.addAll(productsIncludingQuery);
+            filteredProducts.addAll(productsIncludedInPriceRange);
+
+            return filteredProducts.stream().toList();
+        }
         return productRepository.findAll();
     }
 
+
+    public Set<Product> filterAllProductsBySearchQuery(String query){
+        Set<Product> productsIncludingSearchQuery = new HashSet<>();
+        List<Product> products = productRepository.findAll();
+        products.stream().filter(product ->
+                product.getTitle().contains(query) ||
+                product.getDescription().contains(query)||
+                product.getColour().contains(query)||
+                product.getBrand().contains(query)).forEach(
+                productsIncludingSearchQuery::add
+        );
+        return productsIncludingSearchQuery;
+    }
+
+    public Set<Product> filterAllProductsByPriceRange(double minPrice, double maxPrice){
+        Set<Product> productsIncludedInPriceRange = new HashSet<>();
+        List<Product> products = productRepository.findAll();
+        products.stream().filter(product ->
+                product.getPrice() >= minPrice && product.getPrice() <= maxPrice )
+                .forEach(productsIncludedInPriceRange::add);
+        return productsIncludedInPriceRange;
+    }
+
+    public Set<Product> filterAllProductsByCategory(String category){
+        Set<Product> productsByCategory = new HashSet<>();
+        List<Product> products = productRepository.findAll();
+        products.stream().filter(product -> product.getCategory().contains(category))
+                .forEach(productsByCategory::add);
+        return productsByCategory;
+    }
 }
