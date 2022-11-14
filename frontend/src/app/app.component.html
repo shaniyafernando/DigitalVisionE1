@@ -1,24 +1,17 @@
-<div class="main-container">
-  <div>
-    <mat-toolbar color="primary">
-      <button mat-icon-button color="accent" aria-label="Example icon button with a menu icon" (click)="drawer.toggle()">
-        <mat-icon>menu</mat-icon>
-      </button>
-      <span style="padding: 30px ;">Digital Vision</span>
-    </mat-toolbar>
-  </div>
-  <div>
-    <mat-drawer-container  hasBackdrop="true">
-      <mat-drawer #drawer mode="over">
-        <button mat-flat-button class="drawer-button" (click)="drawer.toggle()" routerLink="" >H O M E</button>
-        <button mat-flat-button class="drawer-button" (click)="drawer.toggle()" routerLink="/wish-list" >W I S H  L I S T</button>
-      </mat-drawer>
-      <mat-drawer-content>
-        <router-outlet></router-outlet>
-      </mat-drawer-content>
-    </mat-drawer-container>
-  </div>
-</div>
+<!-- Note fron Shaniya to Disal: In this component both registered and unregistered users can access the user-main-page, 
+  likewise admin can access the admin main page. The functionalities that registered and unregistered users can access 
+  has been written in a comment in its respective component.-->
+
+  <!-- Note from Shaniya to all: Until Disal configures the frontend based on user roles, 
+    if you want to build your specific feature, simply comment out the 
+  app-admin-main-page tag. If you want to add dummy data in your product table in your database. 
+  Comment out the app-user-main-page and run your app. and make sure to uncomment it before you commit and push the branch.
+  if you don't, I WILL KILL YOU. let's minimize merge conflicts as much as possible :) -->
+
+
+<app-user-main-page></app-user-main-page>
+<!-- <app-admin-main-page></app-admin-main-page> -->
+<!-- <app-product-list></app-product-list> -->
 
 
 

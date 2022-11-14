@@ -5,6 +5,24 @@
     flex-direction: row;
 }
 
+.child-container{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.column-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.padding{padding-left: 20px;}
+
+.row-img-container{
+    display: flex;
+    flex-direction: row;
+}
+
 
 mat-icon{
    color:#2A3542;

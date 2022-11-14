@@ -1,0 +1,25 @@
+<!-- Note from Shaniya to Disal: The unregistered user can't access the menu button. Theres one more comment in product details. -->
+<!-- Note from Shaniya to all: Add all features accessed by a registered user in the drawer plzzz -->
+
+<div class="main-container">
+    <div>
+      <mat-toolbar color="primary">
+        <button mat-icon-button color="accent" aria-label="Example icon button with a menu icon" (click)="drawer.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span style="padding: 30px ;">Digital Vision</span>
+        <button mat-flat-button color="accent">Login</button>
+      </mat-toolbar>
+    </div>
+    <div>
+      <mat-drawer-container  hasBackdrop="true">
+        <mat-drawer #drawer mode="over">
+          <button mat-flat-button class="drawer-button" (click)="drawer.toggle()" routerLink="" >H O M E</button>
+          <button mat-flat-button class="drawer-button" (click)="drawer.toggle()" routerLink="/wish-list" >W I S H  L I S T</button>
+        </mat-drawer>
+        <mat-drawer-content>
+          <router-outlet></router-outlet>
+        </mat-drawer-content>
+      </mat-drawer-container>
+    </div>
+  </div>

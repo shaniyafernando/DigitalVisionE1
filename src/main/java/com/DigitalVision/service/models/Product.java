@@ -1,22 +1,19 @@
 package com.DigitalVision.service.models;
 
-import org.springframework.format.number.CurrencyStyleFormatter;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Currency;
-import java.util.List;
-import java.util.Locale;
 
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
 @Entity
 @Table
-public class Product {
+public class Product implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String[] images;
+    private String image;
     private String title;
     private String description;
     private String category;
@@ -28,9 +25,9 @@ public class Product {
     public Product() {
     }
 
-    public Product(Long id, String[] images, String title, String description, String colour, String brand,String category, double price, int quantity) {
+    public Product(Long id, String image, String title, String description, String colour, String brand,String category, double price, int quantity) {
         this.id = id;
-        this.images = images;
+        this.image = image;
         this.title = title;
         this.description = description;
         this.colour = colour;
@@ -40,8 +37,8 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public Product(String[] images, String title, String description, String colour, String brand ,String category, double price, int quantity) {
-        this.images = images;
+    public Product(String image, String title, String description, String colour, String brand ,String category, double price, int quantity) {
+        this.image = image;
         this.title = title;
         this.description = description;
         this.colour = colour;
@@ -59,12 +56,12 @@ public class Product {
         this.id = id;
     }
 
-    public String[] getImages() {
-        return images;
+    public String getImage() {
+        return image;
     }
 
-    public void setImages(String[] images) {
-        this.images = images;
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getTitle() {

@@ -1,7 +1,7 @@
 <mat-card (click)="openProductDetailsSection(product)">
     <section class="panel">
         <div class="pro-img-box">
-            <img mat-card-image src={{product.images[1]}} alt="{{product.images[2]}}">
+            <img mat-card-image src={{product.image}} alt="">
         </div>
 
         <div class="panel-body text-center">
@@ -13,10 +13,6 @@
             <p>{{product.price}}</p>
         </div>
     </section>
-    <mat-card-footer color="accent">
-        <!-- <mat-progress-bar mode="indeterminate" color="accent"></mat-progress-bar> -->
-        <mat-divider></mat-divider>
-    </mat-card-footer>
   </mat-card>
 
   

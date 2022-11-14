@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ProductDetailsDTO } from 'src/app/dtos/productDetailsDTO';
 import { Product } from 'src/app/models/product';
 
 @Component({
@@ -7,11 +8,16 @@ import { Product } from 'src/app/models/product';
   styleUrls: ['./product-detail.component.css']
 })
 export class ProductDetailComponent implements OnInit {
-
-  showInWishListComponent: boolean = false;
+  
+  showQuantityFormField!: boolean;
+  showAddToWishListButton! : boolean;
+  showGoBackButton!: boolean;
 
   @Input()
   productDetails!: Product;
+
+  @Input()
+  feature! : ProductDetailsDTO;
 
   @Output() goBackEvent = new EventEmitter<boolean>();
 

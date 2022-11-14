@@ -1,51 +1,57 @@
+<!-- Note from Shaniya to Disal: Unregistered users can't access the wishlist buttons. -->
+
 <div class="main-container">
-    <div class=" child-1-container" >
-        <div class="pro-img-details">
-            <img src="{{productDetails.images[0]}}" alt="">
-        </div>
-        <div class="pro-img-list">
-            <a href="#">
-                  <img src="{{productDetails.images[0]}}" alt="">
-              </a>
-              <a href="#">
-                  <img src="{{productDetails.images[1]}}" alt="">
-              </a>
-              <a href="#">
-                  <img src="{{productDetails.images[2]}}" alt="">
-              </a>
-              <a href="#">
-                  <img src="{{productDetails.images[3]}}" alt="">
-              </a>
-        </div>
+    <div class="child-container">
+        <img  src="{{productDetails.image}}" alt="">
     </div>
-    <div class="col-md-6 child-1-container">
+    <div class="child-conatiner padding">
         <h4 class="pro-d-title">
-            <a href="#" class="">
-                {{productDetails.title}}
-            </a>
+            {{productDetails.title}}
         </h4>
         <p>
             {{productDetails.description}}
         </p>
         <div class="product_meta">
-            <span class="posted_in"> <strong>Category:</strong> <p>{{productDetails.category}}</p></span>
-            <span class="posted_in"> <strong>Colour:</strong> <p>{{productDetails.colour}}</p></span>
-            <span class="tagged_as"><strong>Brand:</strong> <p>{{productDetails.brand}}</p></span>
+            <span class="posted_in"> <strong>Category:</strong> <p>
+                {{productDetails.category}}
+            </p></span>
+            <span class="posted_in"> <strong>Colour:</strong> <p>
+                {{productDetails.colour}}
+            </p></span>
+            <span class="tagged_as"><strong>Brand:</strong> <p>
+                {{productDetails.brand}}
+            </p></span>
         </div>
         
-        <strong>Price : <span class="pro-price"> {{productDetails.price}}</span>
+        <strong>Price : 
+            <span class="pro-price"> 
+            {{productDetails.price}}
+            </span>
+        </strong>
         
-        <div class="form-group">
-            <mat-form-field appearance="fill" color="accent" class="quantity" floatLabel="always">
+    
+        <strong *ngIf="showQuantityFormField == false">Quantity : 
+            <span class="pro-price"> 
+            {{productDetails.quantity}}
+            </span>
+        </strong>
+        <div class="column-container">
+            <mat-form-field appearance="fill" color="accent" class="quantity" floatLabel="always" *ngIf="feature.showQuantityFormField == true">
             <mat-label>Quantity</mat-label>
             <input matInput type="quantity" placeholder="1">
             </mat-form-field>
+            <button mat-flat-button color="accent" type="submit" *ngIf="feature.showAddToWishListButton == true">Add to Wish List</button>
+        <button mat-flat-button color="warn" type="submit" *ngIf="feature.showAddToWishListButton == false">Remove from Wish List</button>
+        <button mat-flat-button color="primary" type="submit" *ngIf="feature.showGoBackButton == true" (click)="openProductListSection(false)" class="go-back-button">Go back</button>
         </div>
-        <p>
-        <button mat-flat-button color="accent" type="submit" *ngIf="!showInWishListComponent">Add to Wish List</button>
-        <button mat-flat-button color="warn" type="submit" *ngIf="showInWishListComponent">Remove from Wish List</button>
-        <button mat-flat-button color="primary" type="submit" (click)="openProductListSection(false)" class="go-back-button">Go back</button>
-        </p>
+    </div> 
+</div>     
+        
+    
+      
+
+    
+    
 
   
 

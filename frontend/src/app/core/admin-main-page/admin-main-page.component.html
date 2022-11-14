@@ -1,0 +1,28 @@
+<div class="main-container">
+    <mat-toolbar color="primary">
+        <span>Digital Vision</span>
+    </mat-toolbar>
+    <mat-drawer-container>
+        <div class="child-container">
+            <button mat-flat-button color="accent" (click)="openDialog(newProduct)">Create a new product</button>
+        </div>
+        <div class="card-container" >
+            <mat-card *ngFor="let product of products">
+                <mat-card-content>
+                    <app-product-detail [productDetails]="product" [feature]="feature"></app-product-detail>
+                </mat-card-content>
+                <mat-card-actions align="end">
+                    <button mat-flat-button color="accent" (click)="openDialog(product)">Edit</button>
+                    <button mat-flat-button color="warn" class="delete-button">Delete</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+        <!-- <div>
+            <mat-paginator [length]="products.length" [pageSize]="10" aria-label="Select page"> </mat-paginator>
+        </div> -->
+    </mat-drawer-container>
+    
+</div>
+
+
+

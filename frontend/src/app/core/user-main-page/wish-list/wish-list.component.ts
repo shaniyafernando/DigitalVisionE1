@@ -33,19 +33,7 @@ export class WishListComponent implements OnInit {
   }
 
   public getAllProducts():void{
-    this.productService.getAllProducts().subscribe
-    (
-      (response: Product[]) => {
-        this.products = response;
-        console.log(this.products);
-        if(this.products == null){
-          this.noProductData = true;
-        }
-      },
-      (error: HttpErrorResponse) => {
-        alert(error.message);
-      }
-    );
+    
   }
 
 }
