@@ -1,4 +1,4 @@
-package com.DigitalVision.service.controllers;
+package com.DigitalVision.service.models;
 
 import com.DigitalVision.service.models.UserEntity;
 

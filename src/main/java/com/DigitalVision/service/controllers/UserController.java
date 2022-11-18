@@ -46,10 +46,4 @@ public class UserController {
         userService.deleteUser(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
-//    @PostMapping("/add")
-//    public ResponseEntity<User> addUser()
-
-
-
 }
