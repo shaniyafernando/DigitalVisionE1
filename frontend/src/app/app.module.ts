@@ -20,6 +20,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -41,6 +43,7 @@ import { PaymentComponent } from './core/user-main-page/payment/payment.componen
 import { DeliveryStatusComponent } from './core/user-main-page/delivery-status/delivery-status.component';
 import { UserPermissionComponent } from './core/admin-main-page/user-permission/user-permission.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,7 +61,8 @@ import { UserPermissionComponent } from './core/admin-main-page/user-permission/
     OrderComponent,
     PaymentComponent,
     DeliveryStatusComponent,
-    UserPermissionComponent
+    UserPermissionComponent,
+    MatStepperModule
   ],
   imports: [
     BrowserModule,
@@ -83,7 +87,8 @@ import { UserPermissionComponent } from './core/admin-main-page/user-permission/
     MatDialogModule,
     ReactiveFormsModule,
     MatGridListModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
