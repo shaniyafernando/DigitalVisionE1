@@ -25,6 +25,8 @@ public class UserService {
         return userRepository.findAll();
     }
 
+//    to update the user table, you need to find the user in the database and then set the updated values.
+//    reference product service
     public UserEntity updateUser(UserEntity userEntity){
         return userRepository.save(userEntity);
     }

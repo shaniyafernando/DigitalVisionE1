@@ -1,20 +1,19 @@
 package com.DigitalVision.service.services;
-
-import com.DigitalVision.service.dtos.SearchDTO;
 import com.DigitalVision.service.models.Product;
 import com.DigitalVision.service.repositories.ProductRepository;
-import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
-
-@AllArgsConstructor
 @Service
 public class ProductService {
 
-    final ProductRepository productRepository;
+    private final ProductRepository productRepository;
+
+    public ProductService(ProductRepository productRepository){
+        this.productRepository = productRepository;
+    }
+
 
     public Product addNewProduct(Product product){
         Product newProduct = new Product();
@@ -54,38 +53,22 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    public List<Product> getAllProducts(SearchDTO search){
-        Set<Product> filteredProducts = new HashSet<>();
-
-        if(search.getQuery() != null || search.getMinPrice() != 0 || search.getMaxPrice() != 0 || search.getCategory() != null){
-            Set<Product> productsIncludingQuery = filterAllProductsBySearchQuery(search.getQuery());
-            Set<Product> productsIncludedInPriceRange = filterAllProductsByPriceRange(search.getMinPrice(), search.getMaxPrice());
-            Set<Product> productsByCategory = filterAllProductsByCategory(search.getCategory());
-            filteredProducts.addAll(productsByCategory);
-            filteredProducts.addAll(productsIncludingQuery);
-            filteredProducts.addAll(productsIncludedInPriceRange);
-
-            return filteredProducts.stream().toList();
-        }
-        return productRepository.findAll();
-    }
-
-
-    public Set<Product> filterAllProductsBySearchQuery(String query){
-        Set<Product> productsIncludingSearchQuery = new HashSet<>();
+    public List<Product> getAllProductsBySearchQuery(String query){
+        List<Product> productsIncludingSearchQuery = new ArrayList<>();
         List<Product> products = productRepository.findAll();
         products.stream().filter(product ->
-                product.getTitle().contains(query) ||
-                product.getDescription().contains(query)||
-                product.getColour().contains(query)||
-                product.getBrand().contains(query)).forEach(
+                product.getTitle().toLowerCase().contains(query.toLowerCase()) ||
+                product.getDescription().toLowerCase().contains(query.toLowerCase())||
+                product.getColour().toLowerCase().contains(query.toLowerCase())||
+                product.getBrand().toLowerCase().contains(query.toLowerCase())||
+                product.getCategory().toLowerCase().contains(query.toLowerCase())).forEach(
                 productsIncludingSearchQuery::add
         );
         return productsIncludingSearchQuery;
     }
 
-    public Set<Product> filterAllProductsByPriceRange(double minPrice, double maxPrice){
-        Set<Product> productsIncludedInPriceRange = new HashSet<>();
+    public List<Product> getAllProductsByPriceRange(double minPrice, double maxPrice){
+        List<Product> productsIncludedInPriceRange = new ArrayList<>();
         List<Product> products = productRepository.findAll();
         products.stream().filter(product ->
                 product.getPrice() >= minPrice && product.getPrice() <= maxPrice )
@@ -93,11 +76,4 @@ public class ProductService {
         return productsIncludedInPriceRange;
     }
 
-    public Set<Product> filterAllProductsByCategory(String category){
-        Set<Product> productsByCategory = new HashSet<>();
-        List<Product> products = productRepository.findAll();
-        products.stream().filter(product -> product.getCategory().contains(category))
-                .forEach(productsByCategory::add);
-        return productsByCategory;
-    }
 }

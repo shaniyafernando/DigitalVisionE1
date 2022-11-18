@@ -6,7 +6,6 @@ import com.DigitalVision.service.services.ProductService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -36,9 +35,15 @@ public class ProductController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping("/search/all")
-    public  ResponseEntity<List<Product>> getAllProducts(SearchDTO search){
-        List<Product> products = productService.getAllProducts(search);
+    @GetMapping("/search")
+    public  ResponseEntity<List<Product>> getAllProducts(String query){
+        List<Product> products = productService.getAllProductsBySearchQuery(query);
+        return new ResponseEntity<>(products, HttpStatus.OK);
+    }
+
+    @GetMapping("/price-range/all")
+    public  ResponseEntity<List<Product>> getAllProducts(double minPrice, double maxPrice){
+        List<Product> products = productService.getAllProductsByPriceRange(minPrice, maxPrice);
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
 
