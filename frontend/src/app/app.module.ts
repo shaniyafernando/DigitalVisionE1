@@ -19,6 +19,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatMenuModule} from '@angular/material/menu';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -34,6 +35,11 @@ import { ProductFormComponent } from './core/admin-main-page/product-form/produc
 import { LoginComponent } from './core/authentication/login/login.component';
 import { RegisterComponent } from './core/authentication/register/register.component';
 import { PublicMainPageComponent } from './core/public-main-page/public-main-page.component';
+import { CartComponent } from './core/user-main-page/cart/cart.component';
+import { OrderComponent } from './core/user-main-page/order/order.component';
+import { PaymentComponent } from './core/user-main-page/payment/payment.component';
+import { DeliveryStatusComponent } from './core/user-main-page/delivery-status/delivery-status.component';
+import { UserPermissionComponent } from './core/admin-main-page/user-permission/user-permission.component';
 
 @NgModule({
   declarations: [
@@ -47,12 +53,18 @@ import { PublicMainPageComponent } from './core/public-main-page/public-main-pag
     ProductFormComponent,
     LoginComponent,
     RegisterComponent,
-    PublicMainPageComponent
+    PublicMainPageComponent,
+    CartComponent,
+    OrderComponent,
+    PaymentComponent,
+    DeliveryStatusComponent,
+    UserPermissionComponent
   ],
   imports: [
     BrowserModule,
     MatRadioModule,
     MatDividerModule,
+    MatMenuModule,
     FormsModule,
     MatPaginatorModule,
     AppRoutingModule,

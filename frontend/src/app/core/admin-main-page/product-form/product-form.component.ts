@@ -94,11 +94,11 @@ export class ProductFormComponent implements OnInit {
     
     if(this.formTitle == 'Add new product'){
       this.productService.addNewProduct(this.savedProduct);
-      this.router.navigateByUrl('/admin-panel');
+      this.router.navigate(["/home"]);
     }
 
     this.productService.updateProduct(this.savedProduct);
-    this.router.navigateByUrl('/admin-panel');
+    this.router.navigate(["/home"]);
   }
 
   public invalidProductForm(){
@@ -108,8 +108,8 @@ export class ProductFormComponent implements OnInit {
     });
   }
 
-  public onCancel(){
-    this.router.navigateByUrl('/admin-panel');
-  }
+  
+
+  
 
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-user-main-page',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserMainPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private appComponent: AppComponent) { }
 
   ngOnInit(): void {
   }
 
+  logout(){
+    this.appComponent.showPublicDashboard= true;
+    this.appComponent.showAdminDashboard = false;
+    this.appComponent.showUserDashboard = false;
+  }
+
+  deleteAccount(){
+    this.appComponent.showPublicDashboard= true;
+    this.appComponent.showAdminDashboard = false;
+    this.appComponent.showUserDashboard = false;
+  }
 }

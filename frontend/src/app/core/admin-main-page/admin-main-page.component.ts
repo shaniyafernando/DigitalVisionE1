@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AppComponent } from 'src/app/app.component';
 import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -81,7 +82,7 @@ export class AdminMainPageComponent implements OnInit {
 
   noProductData: boolean = false;
 
-  constructor(public productService: ProductService, private router: Router) { }
+  constructor(public productService: ProductService, private router: Router, private appComponent: AppComponent) { }
 
   ngOnInit(): void {
     // this.getAllProducts();
@@ -90,6 +91,12 @@ export class AdminMainPageComponent implements OnInit {
 
   public navigateToProductForm():void{
     this.router.navigate(['/product-form'], {state: {data: {title:'Add new product'}}});
+  }
+
+  logout(){
+    this.appComponent.showPublicDashboard= true;
+    this.appComponent.showAdminDashboard = false;
+    this.appComponent.showUserDashboard = false
   }
 
   

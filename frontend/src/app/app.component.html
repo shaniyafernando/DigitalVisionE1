@@ -8,10 +8,18 @@
   Comment out the app-user-main-page and run your app. and make sure to uncomment it before you commit and push the branch.
   if you don't, I WILL KILL YOU. let's minimize merge conflicts as much as possible :) -->
 
+<div *ngIf="showPublicDashboard">
+  <app-public-main-page></app-public-main-page>
+</div>
+<div *ngIf="showUserDashboard">
+  <app-user-main-page></app-user-main-page>
+</div>
+<div *ngIf="showAdminDashboard">
+  <app-admin-main-page></app-admin-main-page>
+</div>
 
-<!-- <app-user-main-page></app-user-main-page> -->
-<app-admin-main-page></app-admin-main-page>
-<!-- <app-public-main-page></app-public-main-page> -->
+
+
 
 
 
