@@ -17,6 +17,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,7 +29,11 @@ import { ProductDetailComponent } from './common/product-detail/product-detail.c
 import { WishListComponent } from './core/user-main-page/wish-list/wish-list.component';
 import { UserMainPageComponent } from './core/user-main-page/user-main-page.component';
 import { AdminMainPageComponent } from './core/admin-main-page/admin-main-page.component';
-import { AddProductDialogComponent } from './core/admin-main-page/add-product-dialog/add-product-dialog.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { ProductFormComponent } from './core/admin-main-page/product-form/product-form.component';
+import { LoginComponent } from './core/authentication/login/login.component';
+import { RegisterComponent } from './core/authentication/register/register.component';
+import { PublicMainPageComponent } from './core/public-main-page/public-main-page.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +44,10 @@ import { AddProductDialogComponent } from './core/admin-main-page/add-product-di
     WishListComponent,
     UserMainPageComponent,
     AdminMainPageComponent,
-    AddProductDialogComponent
+    ProductFormComponent,
+    LoginComponent,
+    RegisterComponent,
+    PublicMainPageComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +56,7 @@ import { AddProductDialogComponent } from './core/admin-main-page/add-product-di
     FormsModule,
     MatPaginatorModule,
     AppRoutingModule,
+    MatSnackBarModule,
     MatButtonModule,
     MatCardModule,
     MatProgressBarModule,
@@ -59,7 +69,9 @@ import { AddProductDialogComponent } from './core/admin-main-page/add-product-di
     MatFormFieldModule,
     MatInputModule,
     MatDialogModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatGridListModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,19 +1,14 @@
-<mat-card (click)="openProductDetailsSection(product)">
+<mat-card (click)="navigateToProductDetails()">
     <section class="panel">
-        <div class="pro-img-box">
+        <div>
             <img mat-card-image src={{product.image}} alt="">
         </div>
-
         <div class="panel-body text-center">
-            <h4>
-                <a href="#">
-                    {{product.title}}
-                </a>
-            </h4>
+            <h4>{{product.title}}</h4>
             <p>{{product.price}}</p>
         </div>
     </section>
-  </mat-card>
+</mat-card>
 
   
 

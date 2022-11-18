@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit} from '@angular/core';
+import { Router } from '@angular/router';
 import { Product } from 'src/app/models/product';
 
 @Component({
@@ -11,15 +12,16 @@ export class ProductCardComponent implements OnInit {
   @Input()
   product!: Product;
 
-  @Output() productDetailEvent = new EventEmitter<Product>();
+  @Input()
+  component! : String;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  public openProductDetailsSection(value:Product){
-    this.productDetailEvent.emit(value);
+  public navigateToProductDetails():void{
+    this.router.navigate(['/product-details'], {state: {data: {product: this.product,component:this.component}}});
   }
 
 }

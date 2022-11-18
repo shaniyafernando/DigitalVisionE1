@@ -1,13 +1,18 @@
 mat-card{
-    max-width: 250px;
-    margin-top: 10px;
-    margin-right: 10px ;
+    width: 250px;
+    height: 330px;
+    margin-top: 20px;
+    margin-left: 10px ;
 }
 
 
 .panel {
     border: none;
     box-shadow: none;
+}
+
+img{
+    max-height: 200px;
 }
 
 .pro-img-box {

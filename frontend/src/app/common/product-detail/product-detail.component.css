@@ -1,4 +1,16 @@
+mat-card{
+    max-width: 60vw;
+    max-height: 80%;
+    align-self: center;
+}
 
+.left-spacing{
+    margin-left: 20px;
+}
+
+.button-spacing{
+    margin-top: 10px;
+}
 
 .main-container{
     display: flex;

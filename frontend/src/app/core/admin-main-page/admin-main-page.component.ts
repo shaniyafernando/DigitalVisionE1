@@ -1,10 +1,7 @@
-import { Dialog } from '@angular/cdk/dialog';
 import { Component, OnInit } from '@angular/core';
-import { MatDialog, MatDialogConfig} from '@angular/material/dialog';
-import { ProductDetailsDTO } from 'src/app/dtos/productDetailsDTO';
+import { Router } from '@angular/router';
 import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product.service';
-import { AddProductDialogComponent } from './add-product-dialog/add-product-dialog.component';
 
 @Component({
   selector: 'app-admin-main-page',
@@ -13,40 +10,92 @@ import { AddProductDialogComponent } from './add-product-dialog/add-product-dial
 })
 export class AdminMainPageComponent implements OnInit {
 
-  products!: Product[] ;
-  feature!: ProductDetailsDTO;
-  newProduct! : Product;
+  // products!: Product[] ;
+  
+  component = 'AdminMainPageComponent' ;
+  products: Product[]=[
+    {id: 1,
+    title:'Adjustable Cell Phone Stand',
+    description:'Special Design: MULTI-ANGLE design make cell phone stand possible to be adjusted to your desired angle (270 degree).',
+    image:'http://img.dxcdn.com/productimages/sku_543622_1.jpg',
+    brand:'CreaDream',
+    category:'Stands',
+    colour:'Pink',
+    price:30.99,quantity:50},
+  {id: 2,
+    title:'Car Phone Mount Silicone Car Pad Mat for Various Dashboards',
+    description:'The dashboard cell phone holder is suitable for most kinds of cell phones or GPS devices which are between 6-12mm thick.',
+    image:'https://tse3.mm.bing.net/th?id=OIP.GxpFSKygm83njsYF1tFu4QHaF9&pid=Api&P=0',
+    brand:'Loncaster',
+    category:'Cell Phone Automobile Cradles',
+    colour:'Black',
+    price:25.36,quantity:75},
+    {id: 1,
+      title:'Adjustable Cell Phone Stand',
+      description:'Special Design: MULTI-ANGLE design make cell phone stand possible to be adjusted to your desired angle (270 degree).',
+      image:'http://img.dxcdn.com/productimages/sku_543622_1.jpg',
+      brand:'CreaDream',
+      category:'Stands',
+      colour:'Pink',
+      price:30.99,quantity:50},
+    {id: 2,
+      title:'Car Phone Mount Silicone Car Pad Mat for Various Dashboards',
+      description:'The dashboard cell phone holder is suitable for most kinds of cell phones or GPS devices which are between 6-12mm thick.',
+      image:'https://tse3.mm.bing.net/th?id=OIP.GxpFSKygm83njsYF1tFu4QHaF9&pid=Api&P=0',
+      brand:'Loncaster',
+      category:'Cell Phone Automobile Cradles',
+      colour:'Black',
+      price:25.36,quantity:75},
+      {id: 1,
+        title:'Adjustable Cell Phone Stand',
+        description:'Special Design: MULTI-ANGLE design make cell phone stand possible to be adjusted to your desired angle (270 degree).',
+        image:'http://img.dxcdn.com/productimages/sku_543622_1.jpg',
+        brand:'CreaDream',
+        category:'Stands',
+        colour:'Pink',
+        price:30.99,quantity:50},
+      {id: 2,
+        title:'Car Phone Mount Silicone Car Pad Mat for Various Dashboards',
+        description:'The dashboard cell phone holder is suitable for most kinds of cell phones or GPS devices which are between 6-12mm thick.',
+        image:'https://tse3.mm.bing.net/th?id=OIP.GxpFSKygm83njsYF1tFu4QHaF9&pid=Api&P=0',
+        brand:'Loncaster',
+        category:'Cell Phone Automobile Cradles',
+        colour:'Black',
+        price:25.36,quantity:75},
+        {id: 1,
+          title:'Adjustable Cell Phone Stand',
+          description:'Special Design: MULTI-ANGLE design make cell phone stand possible to be adjusted to your desired angle (270 degree).',
+          image:'http://img.dxcdn.com/productimages/sku_543622_1.jpg',
+          brand:'CreaDream',
+          category:'Stands',
+          colour:'Pink',
+          price:30.99,quantity:50},
+        {id: 2,
+          title:'Car Phone Mount Silicone Car Pad Mat for Various Dashboards',
+          description:'The dashboard cell phone holder is suitable for most kinds of cell phones or GPS devices which are between 6-12mm thick.',
+          image:'https://tse3.mm.bing.net/th?id=OIP.GxpFSKygm83njsYF1tFu4QHaF9&pid=Api&P=0',
+          brand:'Loncaster',
+          category:'Cell Phone Automobile Cradles',
+          colour:'Black',
+          price:25.36,quantity:75}];
 
-  constructor(public dialog: MatDialog,
-    public productService: ProductService) { }
+  noProductData: boolean = false;
+
+  constructor(public productService: ProductService, private router: Router) { }
 
   ngOnInit(): void {
-    this.applyProductDetailsFeatures();
-    this.getAllProducts();
+    // this.getAllProducts();
+    if(this.products == null){this.noProductData = true}
   }
 
-  public applyProductDetailsFeatures(){
-    this.feature.showAddToWishListButton = false;
-    this.feature.showGoBackButton = false;
-    this.feature.showQuantityFormField = false;
+  public navigateToProductForm():void{
+    this.router.navigate(['/product-form'], {state: {data: {title:'Add new product'}}});
   }
 
+  
 
-  public openDialog( product : Product): void {
-    const dialogConfig = new MatDialogConfig();
-
-    dialogConfig.width = "50vw";
-    dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-    dialogConfig.data = {product: product};
-
-    this.dialog.open(AddProductDialogComponent,dialogConfig);                  
-  }
-
-  public getAllProducts(){
-    this.productService.getAllProducts().subscribe(
-      (response) => this.products = response
-    );
-  }
+  // public getAllProducts(){
+  //   this.products = this.productService.getAllProducts();
+  // }
 
 }

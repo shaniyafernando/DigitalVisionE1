@@ -1,26 +1,26 @@
-<div  *ngFor="let product of products">
-    <div  *ngIf="!showProductDetail" class="main-container">
+<div>
+    <div  class="main-container">
         <div class="child-1-container">
             <div class="search-form-field">
                 <mat-form-field appearance="outline" color="accent">
                     <mat-label>Search product</mat-label>
-                    <input matInput placeholder="Search" [(ngModel)]="query">
-                    <!-- (keyup)="getAllProducts()" -->
+                    <input matInput placeholder="Search">
+                    <!-- [(ngModel)]="query" (keyup)="getAllProducts()" -->
                     <mat-icon matSuffix>search</mat-icon>
                 </mat-form-field>
             </div>
             <div class="fields">
                 <mat-form-field appearance="fill" color="accent" floatLabel="always">
                     <mat-label>Minimum Price</mat-label>
-                    <input matInput type="number" class="right-align" placeholder="0" [(ngModel)]="minPrice">
-                    <!-- (keyup)="getAllProducts()" -->
+                    <input matInput type="number" class="right-align" placeholder="0">
+                    <!--  [(ngModel)]="minPrice" (keyup)="getAllProducts()" -->
                     <span matPrefix>$&nbsp;</span>
                     <span matSuffix>.00</span>
                 </mat-form-field>
                 <mat-form-field appearance="fill" color="accent" floatLabel="always">
                     <mat-label>Maximun Price</mat-label>
-                    <input matInput type="number" class="right-align" placeholder="0" [(ngModel)]="maxPrice">
-                    <!-- (keyup)="getAllProducts()" -->
+                    <input matInput type="number" class="right-align" placeholder="0" >
+                    <!-- [(ngModel)]="maxPrice" (keyup)="getAllProducts()" -->
                     <span matPrefix>$&nbsp;</span>
                     <span matSuffix>.00</span>
                 </mat-form-field>
@@ -35,18 +35,13 @@
                 </mat-radio-group>
             </div>
         </div>
-        <div class="child-2-container" *ngIf="noProductData">
-            <div >
-                <div>
-                    <app-product-card [product]="product" (productDetailEvent)="viewProductDetails($event)"></app-product-card>
-                </div>  
+        <div fxLayout="row wrap" >
+            <div fxFlex="25%" *ngFor="let product of products" >
+                <app-product-card [product]="product" [component]="component"></app-product-card>
             </div>
         </div>
-        <div class="no-data-container" *ngIf="!noProductData">
+        <div class="no-data-container" *ngIf="noProductData">
             <h4>No products found!</h4>
         </div>
-    </div>
-    <div *ngIf="showProductDetail">
-        <app-product-detail [productDetails]="product" [feature]="productDetailsFeatures"  (goBackEvent)="viewProductList($event)"></app-product-detail>
     </div>
 </div>
